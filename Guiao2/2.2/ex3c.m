@@ -1,1 +1,1 @@
-% é teoria bro
+% é teoria

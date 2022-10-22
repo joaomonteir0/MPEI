@@ -15,6 +15,7 @@ soma1 = 0;
 soma2 = 0;
 soma3 = 0;
 soma4 = 0;
+
 for i = 1 : N
     if (coroas(i) == 0)
         soma0 = soma0 + 1;
