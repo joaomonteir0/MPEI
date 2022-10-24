@@ -1,25 +1,41 @@
-clear all;
-N = 1e6; % repetições
+% i)
+Sx=0:5;
+N=1e6;
+M=rand(5,N);
+defeito= M<0.3;
 
-%a)
-% > i)
-partes = rand(5,N) < 0.3;
-num = sum(partes); % nº peças defeituosas
-X = 0:5;
-fx = zeros(1,6);
+defeito0=sum(sum(defeito) == 0);
+defeito1=sum(sum(defeito) == 1);
+defeito2=sum(sum(defeito) == 2);
+defeito3=sum(sum(defeito) == 3);
+defeito4=sum(sum(defeito) == 4);
+defeito5=sum(sum(defeito) == 5);
 
-for i = X
-    fx(i+1) = sum(num==i) / N;
-end
+prob0=defeito0/N;
+prob1=defeito1/N;
+prob2=defeito2/N;
+prob3=defeito3/N;
+prob4=defeito4/N;
+prob5=defeito5/N;
 
-fx
-stem(X, fx)
-grid on
+probs = [prob0 prob1 prob2 prob3 prob4 prob5];
 
-% > ii)
-Px = cumsum(fx);
-stairs(Px)
+subplot(2,2,1)
+stem(Sx,probs)
+xlim([-1,6])
 
-% > iii)
+subplot(2,2,2)
+stairs([0 Sx],[0 probs])
+xlim([-1,6])
 
+% ii)
+subplot(2,2,3)
+probs1=cumsum(probs)
+stairs([0 Sx],[0 probs1])
+xlim([-1,6])
+ylim([0,1.2])
 
+% iii)
+
+defeitomax2=sum(sum(defeito) <= 2);
+pmax2 = defeitomax2/N

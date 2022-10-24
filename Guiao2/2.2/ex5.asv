@@ -1,0 +1,20 @@
+N = 1e6;    % repetições
+
+motores_2 = rand(2,N);
+motores_4 = rand(4,N);
+
+falhar2 = motores_2<0.5;
+falhar4 = motores_4<0.5;
+
+cair2 = sum(sum(falhar2)>1);
+cair4 = sum(sum(falhar4)>2);
+
+probCair2 = cair2/N;
+probCair4 = cair4/N;
+
+probCair2
+probCair4
+
+p = logspace(-2,log10(1/2), 100);
+
+prob_cair2 = zeros()
